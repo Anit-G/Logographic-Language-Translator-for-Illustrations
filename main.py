@@ -1,6 +1,6 @@
 import argparse
 from pipelines_utils import craftbbox_utils
-from crop_images import crop_bound_images
+from crop_images import image_utils
 from ocr_utils import OCR_ops
 def str2bool(v):
     return v.lower() in ("yes", "y", "true", "t", "1")
@@ -29,10 +29,12 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     Pipeline = craftbbox_utils()
+    img_obj = image_utils()
     OCR_Pipeline = OCR_ops(args.ocr_model,args.crop_dir,args.csv)
 
     Pipeline.craft_pipeline(args)
-    crop_bound_images(args.csv,args.results_folder,args.crop_dir)
+    img_obj.crop_bound_images(args.csv,args.results_folder,args.crop_dir)
     text = OCR_Pipeline.model_pipeline()
+
     # OCR_Pipeline.add_csv(text)
     print(text)

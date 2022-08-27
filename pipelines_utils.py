@@ -7,8 +7,6 @@ import torch.backends.cudnn as cudnn
 import cv2
 import pandas as pd
 
-from CRAFT.craft_utils import getDetBoxes,adjustResultCoordinates
-from crop_images import generate_words
 from CRAFT.test import copyStateDict, test_net
 from CRAFT.file_utils import get_files, saveResult
 from CRAFT.imgproc import resize_aspect_ratio, normalizeMeanVariance, cvt2HeatmapImg, loadImage
